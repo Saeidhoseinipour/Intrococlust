@@ -79,8 +79,6 @@ In conclusion, co-clustering is a versatile technique that reveals hidden struct
 
 ## References
 
-Here are some references and resources for further reading on co-clustering:
-
 1. Bahmani, B., Moseley, B., Vattani, A., Kumar, R., & Vassilvitskii, S. (2012). Scalable K-Means++. Proceedings of the VLDB Endowment, 5(7), 622-633.
 
 2. Dhillon, I. S. (2001). Co-Clustering Documents and Words Using Bipartite Spectral Graph Partitioning. In Proceedings of the Seventh ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD '01), 269-274.
