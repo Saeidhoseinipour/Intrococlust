@@ -12,15 +12,44 @@ Several approaches and algorithms exist for co-clustering. Here are some of the 
 
 1. **Spectral Co-Clustering**:
 
-   Spectral co-clustering leverages the spectral properties of a bipartite graph representation of the data. By examining the eigenvalues and eigenvectors of the graph Laplacian, it can identify co-cluster structures. Some popular spectral co-clustering algorithms include the Spectral Co-Clustering (SpectralCoclust) algorithm and the Normalized Spectral Co-Clustering (NSCC) algorithm.
+   Spectral co-clustering leverages the spectral properties of a bipartite graph representation of the data. It transforms the data into a graph, where rows and columns are represented as nodes, and edges indicate relationships between them. The goal is to find the eigenvalues and eigenvectors of the graph Laplacian to identify co-cluster structures.
+
+   The Laplacian matrix (L) of the graph is defined as:
+$$L = D - A$$
+
+
+
+Where:
+- `D` is the degree matrix, a diagonal matrix where `D_{ii}` is the degree (sum of edge weights) of node `i`.
+- `A` is the adjacency matrix, indicating the presence (1) or absence (0) of edges between nodes.
 
 2. **Fuzzy Co-Clustering**:
 
-   Fuzzy co-clustering relaxes the binary nature of co-clustering by allowing data points to belong to multiple clusters to varying degrees. Fuzzy c-means (FCM) and its variants are often used in this approach. FCM assigns membership values to data points in each co-cluster, providing a more nuanced view of the data.
+Fuzzy co-clustering relaxes the binary nature of traditional co-clustering by allowing data points to belong to multiple clusters with varying degrees of membership. It uses the fuzzy c-means (FCM) algorithm to assign a membership value to each data point in each co-cluster.
+
+The objective function of FCM can be defined as:
+
+$$J_m(U, V) = ∑_{i=1}^{n} ∑_{j=1}^{c} u_{ij}^m * ||x_i - v_j||^2$$
+
+
+Where:
+- `U` is the membership matrix, where `u_{ij}` represents the membership of data point `i` to cluster `j`.
+- `V` is the cluster centroid matrix, where `v_j` represents the centroid of cluster `j`.
+- `m` is a fuzziness parameter (typically `m > 1`).
 
 3. **Non-Negative Matrix Factorization (NMF)**:
 
-   NMF-based co-clustering techniques factorize the data matrix into two non-negative matrices representing the row and column clusters. Multiplicative Update Rules, Hierarchical Alternating Least Squares (HALS), and other NMF variants are used for co-clustering tasks. NMF-based approaches are particularly useful for text data analysis.
+NMF-based co-clustering techniques factorize the data matrix `X` into two non-negative matrices, `W` (representing the row clusters) and `H` (representing the column clusters). The goal is to find these matrices such that their product approximates the original data matrix `X`:
+
+$$X ≈ WH$$
+
+The objective function for NMF can be defined as the Frobenius norm of the reconstruction error:
+
+$$min_{W, H} ||X - WH||_F^2$$
+
+The non-negativity constraint ensures that all elements of `W` and `H` are non-negative, which can lead to more interpretable co-clusters.
+
+These are three different approaches to co-clustering with their respective equations. Each approach has its advantages and is suitable for different types of data and applications.
 
 4. **Bi-Clustering with Binary Matrix Factorization**:
 
